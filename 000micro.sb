@@ -1,0 +1,48 @@
+s1=Sensor.ReadRawValue(1,0)
+s2=sensor.ReadRawValue(2,0)
+t1=Sensor.ReadPercent(1)
+t2=sensor.ReadPercent(2)
+s3=sensor.ReadRawValue(3,0)
+Sub item
+  s1=Sensor.ReadRawValue(1,0)
+s2=sensor.ReadRawValue(2,0)
+t1=Sensor.ReadPercent(1)
+t2=sensor.ReadPercent(2)
+s3=sensor.ReadRawValue(3,0)
+EndSub
+Sub chek 
+  LCD.Clear()
+  s1=Sensor.ReadRawValue(1,0)
+  s2=sensor.ReadRawValue(2,0)
+  If s3 > 1 And s3 <3 Then
+    LCD.Text(1,15,15,2,"blue")
+  s3=sensor.ReadRawValue(3,0)
+EndIf
+
+If s3 > 2 And s3 <4 Then
+    LCD.Text(1,15,15,2,"green")
+  s3=sensor.ReadRawValue(3,0)
+EndIf
+
+If s3 > 4 And s3 <6 Then
+    LCD.Text(1,15,15,2,"red")
+  s3=sensor.ReadRawValue(3,0)
+EndIf
+
+If s3 > 3 And s3 <5 Then
+    LCD.Text(1,15,15,2,"yellow")
+  s3=sensor.ReadRawValue(3,0)
+  EndIf
+EndSub
+
+
+While "true"
+  item()
+  If s1 >500 Then
+ Motor.Move("A"10,90,"True")
+ s3=sensor.ReadRawValue(3,0)
+  EndIf
+  If s2 >500 Then
+    chek()
+  EndIf
+  EndWhile
